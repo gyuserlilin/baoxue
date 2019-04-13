@@ -17,7 +17,7 @@ require(["require.config"], function () {
                 this.numModule();
                 this.checkModule ();
                 this.allPrice ();
-                this.minPrice ();
+                //this.minPrice ();
             }
             //数量加减
             numModule () {
@@ -25,10 +25,13 @@ require(["require.config"], function () {
                 let _this = this;
                 $("#tbody_box").on("click", ".plusBtn", function(){
                     $(this).prev().val(Number($(this).prev().val())+1);
-                    //修改num+
+                    //小计价格
+                    var price = $(this).parent().parent().parent().prev().children().html();
+                    var num = $(this).prev().val() * price;
+                    $(this).parent().parent().parent().next().children().html(num)
+                    //修改localstruage的num+
                     let dataId = $(this).prev().attr("dataId"),
                         index;
-                    //console.log(dataId)
                     if(_this.cart.some((item, i) => {
                         index = i;
                         return item.id == dataId
@@ -36,12 +39,16 @@ require(["require.config"], function () {
                         _this.cart[index].num = $(this).prev().val()
                         localStorage.setItem("cart", JSON.stringify(_this.cart))
                     }
-                    _this.minPrice();
+                    //_this.minPrice();
                     _this.allPrice ();
                 })
                 //-
                 $("#tbody_box").on("click", ".minusBtn", function(){
                     $(this).next().val(Number( $(this).next().val())-1);
+                    //小计价格
+                    var price = $(this).parent().parent().parent().prev().children().html();
+                    var num = $(this).next().val() * price;
+                    $(this).parent().parent().parent().next().children().html(num)
                     //修改num--
                     let dataId = $(this).next().attr("dataId"),
                         index;
@@ -53,7 +60,7 @@ require(["require.config"], function () {
                         _this.cart[index].num = $(this).next().val()
                         localStorage.setItem("cart", JSON.stringify(_this.cart))
                     }
-                    _this.minPrice();
+                    //_this.minPrice();
                     _this.allPrice ();
                 })
                 
@@ -122,11 +129,10 @@ require(["require.config"], function () {
                 })
             }
             //小计
-            minPrice () {
-                var num = $(".numText").val() * $(".isprice").html();
-                $(".subtotal").html(num)
-                console.log(num)
-            }
+            // minPrice () {
+            //     var num = $(".numText").val() * $(".isprice").html();
+            //     $(".subtotal").html(num)
+            // }
             //计算总价
             allPrice () {
                 var arr = Array.from(this.cart),
@@ -140,3 +146,4 @@ require(["require.config"], function () {
         return new shopCart();
     })
 })
+
