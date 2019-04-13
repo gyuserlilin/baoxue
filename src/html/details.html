@@ -22,69 +22,79 @@
                     <i>></i>
                     <a href="">模型收藏</a>
                     <i>></i>
-                    <a href="" class="productName">2018暴雪嘉年华大礼包</a>
+                    <a href="" class="productName" id="productName"></a>
                 </div>
             </div>
             <div class="productDetails">
                 <div class="productInfo">
                     <!-- 左侧图片详情 -->
-                    <div class="images">
-                        <div class="bigImage">
-                            <img src="/images/a.png" alt="">
-                        </div>
-                        <div class="smallImages">
-                            <ul>
-                                <li>
-                                    <img src="/images/a2.jpg" alt="">
-                                </li>
-                                <li>
-                                    <img src="/images/a3.jpg" alt="">
-                                </li>
-                                <li>
-                                    <img src="/images/a4.jpg" alt="">
-                                </li>
-                                <li>
-                                    <img src="/images/a5.jpg" alt="">
-                                </li>
-                                <li>
-                                    <img src="/images/a6.jpg" alt="">
-                                </li>
-                            </ul>
-                        </div>
+                    <div id="imageBox">
+                        <script type="text/html" id="leftImg">
+                            {{each data item }}
+                                <div class="images">
+                                    <div class="bigImage">
+                                        <img id="leftOne" src="{{ item.img.one }}" alt="">
+                                    </div>
+                                    <div class="smallImages" id="imgLi">
+                                        <ul>
+                                            <li>
+                                                <img src="{{ item.img.one }}" alt="">
+                                            </li>
+                                            <li>
+                                                <img src="{{ item.img.two }}" alt="">
+                                            </li>
+                                            <li>
+                                                <img src="{{ item.img.three }}" alt="">
+                                            </li>
+                                            <li>
+                                                <img src="{{ item.img.four }}" alt="">
+                                            </li>
+                                            <li>
+                                                <img src="{{ item.img.five }}" alt="">
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            {{ /each }}
+                        </script>
                     </div>
                     <!-- 右侧商品信息以及加入购物车 -->
                     <div class="info">
-                        <div class="desc">
-                            <div class="pName infoDev">
-                                <span>2018暴雪嘉年华大礼包</span>
-                            </div>
-                            <div class="pDesc infoDev">
-                                <span>打开专属于你的嘉年华惊喜！</span>
-                            </div>
-                            <div class="pSale infoDev">
-                                <div class="infoDev">
-                                    <span>售价：</span>
-                                    <span class="price-rmb">￥</span>
-                                    <span class="price-num">399.00</span>
-                                </div>
-                                <div class="service infoDev">
-                                    <div class="label-div">
-                                        <span>服务：</span>
+                        <div class="desc" id="boxDesc">
+                            <script type="text/html" id="descWrap">
+                                {{ each data item }}
+                                    <div class="pName infoDev">
+                                        <span>{{ item.text.title }}</span>
                                     </div>
-                                    <div class="services">
-                                        <div class="serviceItem">
-                                            <span>.</span>
-                                            <span>全场满88包邮</span>
-                                            <span> </span>
+                                    <div class="pDesc infoDev">
+                                        <span>{{ item.text.describe }}！</span>
+                                    </div>
+                                    <div class="pSale infoDev">
+                                        <div class="infoDev">
+                                            <span>售价：</span>
+                                            <span class="price-rmb">￥</span>
+                                            <span class="price-num">{{ item.price }}.00</span>
                                         </div>
-                                        <div class="serviceItem">
-                                            <span>.</span>
-                                            <span>部分地区无法配送</span>
-                                            <span> </span>
+                                        <div class="service infoDev">
+                                            <div class="label-div">
+                                                <span>服务：</span>
+                                            </div>
+                                            <div class="services">
+                                                <div class="serviceItem">
+                                                    <span>.</span>
+                                                    <span>全场满88包邮</span>
+                                                    <span> </span>
+                                                </div>
+                                                <div class="serviceItem">
+                                                    <span>.</span>
+                                                    <span>部分地区无法配送</span>
+                                                    <span> </span>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
+                                {{ /each }}
+                            </script>
                         </div>
                         <!-- 立即购买  加入购物车 -->
                         <div class="actions">
@@ -107,11 +117,11 @@
                                 </div>
                                 <div class="specBlocks">
                                     <div class="number-input">
-                                        <a class="oper  minus" href="">
+                                        <a class="oper  minus" href="javascript:;" id="minusBtn">
                                             <i>-</i>
                                         </a>
-                                        <input id="numText" type="text">
-                                        <a class="oper plus" href="">
+                                        <input id="numText" type="text" value="1">
+                                        <a class="oper plus" href="javascript:;" id="plusBtn">
                                             <i>+</i>
                                         </a>
                                     </div>
@@ -122,7 +132,7 @@
                                     <a class="commonBtn">
                                         <span>立即购买</span>
                                     </a>
-                                    <a class="commonBtn2">
+                                    <a class="commonBtn2" id="shopBtn">
                                         <span>加入购物车</span>
                                     </a>
                                 </div>

@@ -34,7 +34,7 @@
                     {{ each list item}}
                     <span class="home-game-item">
                         <img src="{{ item.img }}" alt="">
-                        <i>{{ item.name }}</i>
+                        <i class="iones" aId = {{ item.id }}>{{ item.name }}</i>
                     </span>
                     {{ /each }}
                 </script>
@@ -85,7 +85,7 @@
                 </div>
                 <script type="text/html" id="newTem">
                     {{each list item}}
-                        <a class="new-a-list" href="">
+                        <a class="new-a-list" href="/html/details.html?id={{ item.id }}" aId= {{ item.id }}>
                             <img class="prod-img" src="{{ item.imgone }}" alt="">
                             <img class="g-icon" src="{{ item.imgtwo }}" alt="">
                             <span class="prod-name">{{ item.spanone }}</span>
@@ -97,7 +97,7 @@
             </div>
         </div>
         <!-- 居家/手办/数码/配饰/服装图文 -->
-        <div class="floors" id="indexFloors">
+        <div class="floors indexFloors">
             <script type="text/html" id="aidFloors">
                 {{ each list item }}
                     <div class="floor-container">
@@ -137,7 +137,7 @@
                                     </li>
                                 </ul>
                             </div>
-                            <div>
+                            <div class="bigimg">
                                 <img class="floor-banner" src="{{ item.imgone }}" alt="">
                             </div>
                         </div>

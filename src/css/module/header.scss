@@ -19,13 +19,13 @@
             }
         }
         .login-right {
-            width: 180px;
+            width: auto;
             height: auto;
             color: #7f93a9;
             float: right;
             margin-right: 100px;
             .login-list{
-                display: flex;
+                //display: flex;
                 width: 100%;
                 height: 30px;
                 justify-content: space-around;
@@ -34,10 +34,54 @@
                     cursor: pointer;
                 }
                 li{
-                    a{
-                        color: #7f93a9;
-                        text-decoration: none;
+                    height: 30px;
+                    line-height: 30px;
+                    position: relative;
+                    cursor: pointer;
+                    display: inline-block;
+                    .menu-item{
+                        display: inline-block;
+                        border-right: 1px solid #7a92ac;
+                        line-height: 14px;
+                        padding-left: 10px;
+                        padding-right: 10px;
+                        a{
+                            color: #7f93a9;
+                            text-decoration: none;
+                        }
                     }
+                    .sub-menu{
+                        display: none;
+                        position: absolute;
+                        top: 30px;
+                        left: 0;
+                        background: rgba(0,0,0,.5);
+                        list-style: none;
+                        border: 1px solid #374254;
+                        width: 100%;
+                        z-index: 5000;
+                        li{
+                            text-align: center;
+                            border-bottom: 1px solid #374254;
+                            width: 100%;
+                            height: 30px;
+                            line-height: 30px;
+                            &:hover a{
+                                color: #fff;
+                            }
+                            a{
+                                color: inherit;
+                            }
+                        }
+                    }
+                }
+                
+            }
+            //预设样式
+            .login-list-two{
+                display: none;
+                &:hover .sub-menu{
+                    display: block;
                 }
             }
         }
@@ -91,12 +135,15 @@
                 color: #c9d8e6;
             }
         }
-        .icon-gouwuche{
+        .gouwuche-a{
             position: absolute;
-            top: 2px;
+            top: 0px;
             left: 290px;
             font-size: 20px;
             color: #c9d8e6;
+            i{
+                font-size: 20px; 
+            }
             span{
                 display: block;
                 width: 20px;
@@ -118,6 +165,7 @@
 .nav-project{
     height: 40px;
     width: 100%;
+    position: relative;
     background-color: rgba(0, 0, 0, .2);
     .nav-list{
         width: 880px;
@@ -128,6 +176,8 @@
         align-items: center;
         font-size: 15px;
         li{
+            height: 40px;
+            line-height: 40px;
             a{
                 color: #cfd2d7;
                 font-weight: 700;

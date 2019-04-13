@@ -7,6 +7,6 @@ require.config({
 		"slides" : "js/module/slides",
 		"url" : "js/module/url",
 		"template" : "libs/art-template/template-web",
-		
+		"islogin" : "js/module/islogin",
 	}
 })

@@ -1,5 +1,5 @@
 require(["require.config"], function () {
-    require(["jquery", "header","url", "template", "footer","slides"], function ($, header, url, template) {
+    require(["jquery", "header","url", "template", "footer", "slides", "islogin"], function ($, header, url, template) {
       class Index  {
         constructor () {
             this.carrousel();
@@ -23,8 +23,16 @@ require(["require.config"], function () {
                         //template 是模块引擎提供的方法，用它来渲染模板引擎
                         var html = template("carrouselList", {list});
                         $("#aidCarrouselr").html(html);
-                    }
+                    } 
                 }
+            })
+            this.carrouselEvent ();
+        }
+        //游戏导航栏点击事件
+        carrouselEvent () {
+            $("#aidCarrouselr").on("click", ".iones", function() {
+                var id = $(this).attr("aId");
+                location.href = "/html/list.html" + "?id=" +id;
             })
         }
         //人气热销栏
@@ -69,7 +77,7 @@ require(["require.config"], function () {
             $("#hot-bottoms").on("click", ".left-text", function () {
                 var html = this;
                 var id = $(html).attr("aId")
-                location.href = "/html/details.html" + "?" +id;
+                location.href = "/html/details.html" + "?id=" +id;
             })
         }
         //右面
@@ -78,7 +86,7 @@ require(["require.config"], function () {
                 var html = this;
                 var id = $(html).attr("aId")
                 //console.log(id)
-                location.href = "/html/details.html" + "?" +id;
+                location.href = "/html/details.html" + "?id=" +id;
             })
         }
         //最新周边
@@ -109,7 +117,7 @@ require(["require.config"], function () {
                     if(res.res_code === 1){
                         let list = res.res_body.list;
                         var html = template("aidFloors", {list});
-                        $("#indexFloors").html(html);
+                        $(".indexFloors").html(html);
                     }
                 }
             })

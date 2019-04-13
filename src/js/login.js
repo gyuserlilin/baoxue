@@ -22,10 +22,11 @@ require(["require.config"], function () {
                                 let rappassword = res.res_body.list[0].one.password == _this.pwd;
                                 //console.log(rapuser)
                                 if(rapuser) {
+                                    let usercookie = sessionStorage.setItem("user", _this.user)
                                    if(rappassword) {
-                                    if(confirm("即将跳转主页")){
-                                        location.href = "/index.html";
-                                    }
+                                        if(confirm("即将跳转主页")){
+                                            location.href = "/index.html";
+                                        }
                                    }else{
                                         var html = $("<span>账号或密码错误</span>");
                                         $("#nobox").html(html);    
