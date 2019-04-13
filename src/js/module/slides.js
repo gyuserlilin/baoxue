@@ -106,7 +106,7 @@ define(["jquery"], function($) {
       //移出事件
       leaveEvent () {
         this.$slides_container.on("mouseleave", () => {
-          //this.bootUp ()
+          this.bootUp ()
         })
       }
     }
