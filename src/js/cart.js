@@ -17,6 +17,7 @@ require(["require.config"], function () {
                 this.numModule();
                 this.checkModule ();
                 this.allPrice ();
+                this.minPrice ();
             }
             //数量加减
             numModule () {
@@ -35,6 +36,8 @@ require(["require.config"], function () {
                         _this.cart[index].num = $(this).prev().val()
                         localStorage.setItem("cart", JSON.stringify(_this.cart))
                     }
+                    _this.minPrice();
+                    _this.allPrice ();
                 })
                 //-
                 $("#tbody_box").on("click", ".minusBtn", function(){
@@ -50,7 +53,10 @@ require(["require.config"], function () {
                         _this.cart[index].num = $(this).next().val()
                         localStorage.setItem("cart", JSON.stringify(_this.cart))
                     }
+                    _this.minPrice();
+                    _this.allPrice ();
                 })
+                
             }
             //全选与单选
             checkModule () {
@@ -83,19 +89,43 @@ require(["require.config"], function () {
                         if(item.checked){
                             let tr = $(item).parent().parent();
                             tr.remove();
+                            //删除localstroage的数据
+                            var id = $(item).parent().parent().attr("aId")
+                            this.cart.some((par, i) => {
+                                if(id == par.id){
+                                   this.cart.splice(i, 1)
+                                   localStorage.setItem("cart", JSON.stringify(this.cart))
+                                   console.log(this.cart)
+                                }
+                            })
                         }
                     })
                 })
             }
             //tbody删除事件
             tbodyDelEvent () {
-                $("#tbodyDelBtn").on("click", function () {
+                var _this = this;
+                $(".tbodyDelBtn").on("click", function () {
                     let tr = $(this).parent().parent();
                     $("#okBtn").on("click", () => {
                         tr.remove()
-                        $('#myModal').modal('hide')
+                        //$('#myModal').modal('hide')
+                        //删除localstroage的数据btn btn-danger btn-sm
+                        var id = $(this).parent().parent().attr("aId")
+                        _this.cart.some((par, i) => {
+                            if(id == par.id){
+                               _this.cart.splice(i, 1)
+                               localStorage.setItem("cart", JSON.stringify(_this.cart))
+                            }
+                        })
                     })
                 })
+            }
+            //小计
+            minPrice () {
+                var num = $(".numText").val() * $(".isprice").html();
+                $(".subtotal").html(num)
+                console.log(num)
             }
             //计算总价
             allPrice () {

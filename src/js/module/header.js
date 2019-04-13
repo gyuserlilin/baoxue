@@ -1,7 +1,5 @@
 // // //header模块
-// define(["jquery",], function($) {
-//     require(["require.config"], function(){
-//         require(["template"], function (template) {
+// define(["jquery","template"], function($, template) {
 //             class Header {
 //                 constructor () {
 //                     this.init().then(() =>{
@@ -46,8 +44,6 @@
 //                 }
 //             }
 //             return new Header();
-//         })
-//     })
 // });
 define(["jquery",], function($) {
     class Header {

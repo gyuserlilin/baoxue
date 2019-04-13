@@ -40,14 +40,14 @@
                 <tbody id="tbody_box">
                     <script type="text/html" id="tbody_xuan">
                         {{ each data item }}
-                            <tr>
+                            <tr aId = "{{ item.id }}">
                                 <td class="tbody-first-td">
                                     <input type="checkbox" class="tbodyCheck" value="option1">
                                 </td>
                                 <td></td>
                                 <td class="prod-img"><img src="{{ item[0].img.one }}" alt=""></td>
                                 <td class="prod-info"><span>{{ item[0].text.title}}</span></td>
-                                <td><span>{{ item[0].price}}</span></td>
+                                <td><span class="isprice">{{ item[0].price}}</span></td>
                                 <td id="num">
                                     <div class="number-input">
                                         <span>
@@ -57,10 +57,10 @@
                                         </span>
                                     </div>
                                 </td>
-                                <td>￥：<span class="subtotal">{{ item[0].price * item.num }}</span></td>
+                                <td>￥：<span class="subtotal"></span></td>
                                 <td></td>
                                 <td>
-                                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModal" id="tbodyDelBtn">
+                                    <button type="button" class="btn btn-danger btn-sm tbodyDelBtn" data-toggle="modal" data-target="#myModal">
                                        删除
                                     </button>
                                 </td>

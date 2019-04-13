@@ -1,12 +1,12 @@
 <!DOCTYPE html><html><head><meta charset="utf-8"><title>暴雪商城-购物车</title><link rel="stylesheet" href="/css/cart.css"><link rel="stylesheet" href="/libs/font/iconfont.css"><link rel="stylesheet" href="/libs/bootstrap/css/bootstrap.min.css"><script src="/libs/jquery/jquery-3.2.1.js"></script><script type="text/javascript" src="/libs/bootstrap/js/bootstrap.min.js"></script></head><body><header id="head-container"></header><main class="shopcart-box"><div class="top"><ul class="top-ul"><li><a href="/index.html">首页</a>>&nbsp;</li><li>购物车</li></ul></div><div class="bottom-list"><table class="table table-striped"><thead><tr><th class="firet-th"><input type="checkbox" id="theadCheck" value="option1"> 全选</th><th></th><th colspan="2">商品信息</th><th>单价</th><th>数量</th><th>小计</th><th>活动</th><th></th></tr></thead><tbody id="tbody_box"><script type="text/html" id="tbody_xuan">{{ each data item }}
-                            <tr>
+                            <tr aId = "{{ item.id }}">
                                 <td class="tbody-first-td">
                                     <input type="checkbox" class="tbodyCheck" value="option1">
                                 </td>
                                 <td></td>
                                 <td class="prod-img"><img src="{{ item[0].img.one }}" alt=""></td>
                                 <td class="prod-info"><span>{{ item[0].text.title}}</span></td>
-                                <td><span>{{ item[0].price}}</span></td>
+                                <td><span class="isprice">{{ item[0].price}}</span></td>
                                 <td id="num">
                                     <div class="number-input">
                                         <span>
@@ -16,10 +16,10 @@
                                         </span>
                                     </div>
                                 </td>
-                                <td>￥：<span class="subtotal">{{ item[0].price * item.num }}</span></td>
+                                <td>￥：<span class="subtotal"></span></td>
                                 <td></td>
                                 <td>
-                                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModal" id="tbodyDelBtn">
+                                    <button type="button" class="btn btn-danger btn-sm tbodyDelBtn" data-toggle="modal" data-target="#myModal">
                                        删除
                                     </button>
                                 </td>
